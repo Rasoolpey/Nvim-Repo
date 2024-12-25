@@ -16,7 +16,7 @@ return {
 					path = "/home/pvm8318/Documents/Obsidian",
 				},
 			},
-			notes_subdir = "current_dir", -- We don't want to force notes into a subdirectory
+			notes_subdir = "notes", -- We don't want to force notes into a subdirectory
 			new_notes_location = "current_dir", -- This ensures notes are created in the current directory
 			completion = {
 				nvim_cmp = false,
