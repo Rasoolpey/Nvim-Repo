@@ -22,18 +22,18 @@ return {
 				nvim_cmp = false,
 			},
 			-- Modify the note_id_func to maintain directory structure
-			note_path_func = function(spec)
-				-- Get the directory of the current buffer
-				local current_buf = vim.api.nvim_get_current_buf()
-				local current_file = vim.api.nvim_buf_get_name(current_buf)
-				local current_dir = vim.fn.fnamemodify(current_file, ":h")
-				-- If we're not in a file, use the current working directory
-				if current_file == "" then
-					current_dir = vim.fn.getcwd()
-				end
-				-- Create the path in the current directory
-				return current_dir .. "/" .. spec.id .. ".md"
-			end,
+			-- note_path_func = function(spec)
+			-- 	-- Get the directory of the current buffer
+			-- 	local current_buf = vim.api.nvim_get_current_buf()
+			-- 	local current_file = vim.api.nvim_buf_get_name(current_buf)
+			-- 	local current_dir = vim.fn.fnamemodify(current_file, ":h")
+			-- 	-- If we're not in a file, use the current working directory
+			-- 	if current_file == "" then
+			-- 		current_dir = vim.fn.getcwd()
+			-- 	end
+			-- 	-- Create the path in the current directory
+			-- 	return current_dir .. "/" .. spec.id .. ".md"
+			-- end,
 			note_id_func = function(title)
 				-- Format: YYYY-MM-DD-title
 				local date = os.date("%Y-%m-%d")
