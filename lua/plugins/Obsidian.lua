@@ -39,7 +39,7 @@ return {
 				local date = os.date("%Y-%m-%d")
 				if title ~= nil then
 					-- If title is given, transform it into valid file name
-					return date .. "-" .. title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+					return title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
 				else
 					-- If no title is given, just use the date and a random string
 					local random_suffix = ""
@@ -173,4 +173,5 @@ return {
 			vim.keymap.set("n", "<leader>mp", ":MarkdownPreviewToggle <CR>", {})
 		end,
 	},
+	{ "sbdchd/neoformat" },
 }
