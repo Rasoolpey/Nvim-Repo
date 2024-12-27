@@ -1,3 +1,4 @@
+vim.keymap.set("n", "<leader>ip", "i![](Media/)<ESC>F(a", { desc = "Insert image template" })
 return {
 	{
 		"epwalsh/obsidian.nvim",
