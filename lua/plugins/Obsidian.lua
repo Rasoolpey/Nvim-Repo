@@ -1,4 +1,6 @@
 vim.keymap.set("n", "<leader>ip", "i![](Media/)<ESC>F(a", { desc = "Insert image template" })
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
 return {
 	{
 		"epwalsh/obsidian.nvim",
