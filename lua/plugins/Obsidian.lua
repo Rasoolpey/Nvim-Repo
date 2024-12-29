@@ -4,6 +4,187 @@ vim.keymap.set("n", "<leader>ip", [[i<div style="text-align: center;">
 </div>]] .. [[<ESC>5k0f"a]], { desc = "Insert image template with styling" })
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
+
+-- Keymaps for inserting images dynamically in HTML
+
+-- 1x1 Layout
+vim.keymap.set("n", "<leader>i11p", [[i<div style="text-align: center;">
+    <img src="Media/" alt="" width="400">
+    <p style="font-style: italic; font-size: 0.9em;">Caption here</p>
+</div>]] .. [[<ESC>5k0f"a]], { desc = "Insert 1x1 image" })
+
+-- 1x2 Layout (Horizontally Side-by-Side)
+vim.keymap.set("n", "<leader>i12p", [[i<div style="display: flex; justify-content: space-between;">
+    <figure>
+        <img src="Media/" width="300"/>
+        <figcaption>Caption 1</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="300"/>
+        <figcaption>Caption 2</figcaption>
+    </figure>
+</div>]] .. [[<ESC>6k0f"a]], { desc = "Insert 1x2 image layout" })
+
+-- 1x3 Layout (Horizontally Side-by-Side)
+vim.keymap.set("n", "<leader>i13p", [[i<div style="display: flex; justify-content: space-between;">
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 1</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 2</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 3</figcaption>
+    </figure>
+</div>]] .. [[<ESC>8k0f"a]], { desc = "Insert 1x3 image layout" })
+
+-- 2x1 Layout (Vertically Stacked)
+vim.keymap.set("n", "<leader>i21p", [[i<div style="text-align: center;">
+    <figure>
+        <img src="Media/" width="400"/>
+        <figcaption>Caption 1</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="400"/>
+        <figcaption>Caption 2</figcaption>
+    </figure>
+</div>]] .. [[<ESC>6k0f"a]], { desc = "Insert 2x1 image layout" })
+
+-- 2x2 Layout (Grid)
+vim.keymap.set("n", "<leader>i22p", [[i<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 1</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 2</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 3</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 4</figcaption>
+    </figure>
+</div>]] .. [[<ESC>10k0f"a]], { desc = "Insert 2x2 image layout" })
+
+-- 2x3 Layout (Grid with 2 Rows and 3 Columns)
+vim.keymap.set("n", "<leader>i23p", [[i<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 1</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 2</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 3</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 4</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 5</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 6</figcaption>
+    </figure>
+</div>]] .. [[<ESC>12k0f"a]], { desc = "Insert 2x3 image layout" })
+
+-- 3x1 Layout (Vertically Stacked)
+vim.keymap.set("n", "<leader>i31p", [[i<div style="text-align: center;">
+    <figure>
+        <img src="Media/" width="400"/>
+        <figcaption>Caption 1</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="400"/>
+        <figcaption>Caption 2</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="400"/>
+        <figcaption>Caption 3</figcaption>
+    </figure>
+</div>]] .. [[<ESC>8k0f"a]], { desc = "Insert 3x1 image layout" })
+
+-- 3x2 Layout (Grid with 3 Rows and 2 Columns)
+vim.keymap.set("n", "<leader>i32p", [[i<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 1</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 2</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 3</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 4</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 5</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="200"/>
+        <figcaption>Caption 6</figcaption>
+    </figure>
+</div>]] .. [[<ESC>12k0f"a]], { desc = "Insert 3x2 image layout" })
+
+-- 3x3 Layout (Grid)
+vim.keymap.set("n", "<leader>i33p", [[i<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 1</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 2</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 3</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 4</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 5</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 6</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 7</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 8</figcaption>
+    </figure>
+    <figure>
+        <img src="Media/" width="150"/>
+        <figcaption>Caption 9</figcaption>
+    </figure>
+</div>]] .. [[<ESC>18k0f"a]], { desc = "Insert 3x3 image layout" })
+
 return {
 	{
 		"epwalsh/obsidian.nvim",

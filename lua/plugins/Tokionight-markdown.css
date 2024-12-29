@@ -206,24 +206,38 @@ a:hover {
     color: var(--cyan);
     text-decoration: underline;
 }
-
-/* Add this to your existing CSS */
-img[alt$="-sm"] {
-    width: 300px;
-}
-
-img[alt$="-md"] {
-    width: 500px;
-}
-
-img[alt$="-lg"] {
-    width: 700px;
-}
-
-/* Center images with -center suffix */
-img[alt$="-center"] {
+/* Replace with these clean image styles */
+/* Base image styles */
+img {
+    border-radius: 4px;
     display: block;
-    margin: 0 auto;
+}
+
+/* Size variants */
+[alt*="400"] {
+    width: 400px !important;
+}
+
+[alt*="500"] {
+    width: 500px !important;
+}
+
+[alt*="300"] {
+    width: 300px !important;
+}
+
+/* Alignment variants */
+[alt*="left"] {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+[alt*="right"] {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}/* Default center only for images without position specifier */
+img:not([alt$="-left"]):not([alt$="-right"]) {
+    margin: 1em auto;
 }
 
 /* Blockquotes */
@@ -251,12 +265,6 @@ th, td {
 th {
     background-color: rgba(41, 46, 66, 0.5);
     color: var(--cyan);
-}
-
-/* Images */
-img {
-    max-width: 100%;
-    border-radius: 4px;
 }
 
 /* Lists */
