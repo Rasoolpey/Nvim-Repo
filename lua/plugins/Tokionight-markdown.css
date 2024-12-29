@@ -1,0 +1,277 @@
+/* Font definitions */
+:root {
+    --default-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Microsoft YaHei Light", sans-serif;
+    --font-monospace: 'Source Code Pro', monospace;
+    
+    /* Colors from Tokyo Night theme */
+    --bg: rgb(26, 27, 38);
+    --fg: rgb(192, 202, 245);
+    --red: rgb(247, 118, 142);
+    --green: rgb(158, 206, 106);
+    --blue: rgb(122, 162, 247);
+    --cyan: rgb(125, 207, 255);
+    --purple: rgb(187, 154, 247);
+    --orange: rgb(255, 158, 100);
+    --yellow: rgb(224, 175, 104);
+    --circle-bg: rgba(26, 27, 38, 0.3);
+}
+
+/* General styling */
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--default-font);
+    line-height: 1.6;
+    padding: 2em;
+    counter-reset: h1counter;
+}
+
+/* Section numbering and marker styles */
+h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    padding-left: 3.5em;
+    font-family: var(--default-font);
+    display: flex;
+    align-items: center;
+}
+
+/* Counter resets */
+h1 {
+    counter-reset: h2counter;
+    counter-increment: h1counter;
+}
+h2 {
+    counter-reset: h3counter;
+    counter-increment: h2counter;
+}
+h3 {
+    counter-reset: h4counter;
+    counter-increment: h3counter;
+}
+h4 {
+    counter-reset: h5counter;
+    counter-increment: h4counter;
+}
+h5 {
+    counter-reset: h6counter;
+    counter-increment: h5counter;
+}
+h6 {
+    counter-increment: h6counter;
+}
+
+/* Headings with distinct colors */
+h1 {
+    color: var(--red);
+    font-size: 2em;
+    font-weight: bold;
+    border-bottom: 2px solid var(--red);
+    padding-bottom: 0.3em;
+}
+
+h2 {
+    color: var(--yellow);
+    font-size: 1.75em;
+    font-weight: bold;
+}
+
+h3 {
+    color: var(--green);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+h4 {
+    color: var(--cyan);
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+h5 {
+    color: var(--blue);
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+h6 {
+    color: var(--purple);
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Custom section marker */
+h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5em;
+    height: 2.5em;
+    background: var(--circle-bg);
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Section numbering inside the marker */
+h1::after {
+    content: counter(h1counter);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5em;
+    text-align: center;
+    color: currentColor;
+}
+
+h2::after {
+    content: counter(h1counter) "." counter(h2counter);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5em;
+    text-align: center;
+    color: currentColor;
+}
+
+h3::after {
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5em;
+    text-align: center;
+    color: currentColor;
+}
+
+h4::after {
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5em;
+    text-align: center;
+    color: currentColor;
+}
+
+h5::after {
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5em;
+    text-align: center;
+    color: currentColor;
+}
+
+h6::after {
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) "." counter(h6counter);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5em;
+    text-align: center;
+    color: currentColor;
+}
+
+/* Code blocks */
+pre, code {
+    background-color: rgba(41, 46, 66, 0.5);
+    border-radius: 4px;
+    padding: 0.2em 0.4em;
+    font-family: var(--font-monospace);
+}
+
+pre {
+    padding: 1em;
+    overflow-x: auto;
+}
+
+/* Links */
+a {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--cyan);
+    text-decoration: underline;
+}
+
+/* Add this to your existing CSS */
+img[alt$="-sm"] {
+    width: 300px;
+}
+
+img[alt$="-md"] {
+    width: 500px;
+}
+
+img[alt$="-lg"] {
+    width: 700px;
+}
+
+/* Center images with -center suffix */
+img[alt$="-center"] {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid var(--blue);
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    background-color: rgba(41, 46, 66, 0.3);
+    font-family: var(--default-font);
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    margin: 1em 0;
+    width: 100%;
+    font-family: var(--default-font);
+}
+
+th, td {
+    border: 1px solid rgba(41, 46, 66, 0.8);
+    padding: 0.5em;
+}
+
+th {
+    background-color: rgba(41, 46, 66, 0.5);
+    color: var(--cyan);
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+/* Lists */
+ul, ol {
+    padding-left: 2em;
+    font-family: var(--default-font);
+}
+
+li {
+    margin: 0.5em 0;
+}
+
+/* Horizontal rules */
+hr {
+    border: none;
+    border-top: 2px solid rgba(41, 46, 66, 0.8);
+    margin: 2em 0;
+}

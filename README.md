@@ -48,5 +48,56 @@ set recolor-keephue             "true"                 # keep original color
 ```
 
 More information can be found in the [eastack/zathura-gruvbox](https://github.com/eastack/zathura-gruvbox) repository.
+
+
+
+
+## linking PDF files to markdown veiwer the `iamcco/markdown-preview.nvim` plugin.
+in the `route.js` you need to add these few lines to make sure that it can find the linked pdf files correctly. the `route.js` file is located in the `~/.local/share/nvim/lazy/markdown-preview.nvim/app` directory.
+```javascript
+// Preamble   
+const fs = require('fs');
+const path = require('path');
+const logger = require('./lib/util/logger')('app/routes');
+
+const routes = [];
+
+// Simplified handler for serving any file
+const use = (route) => {
+  routes.unshift((req, res, next) => () => route(req, res, next));
+};
+
+
+// down in the bottom of the file 
+// Serve files dynamically
+use((req, res, next) => {
+  const baseDirectory = process.env.MKDP_BASE_DIRECTORY || path.resolve(__dirname, '../../');
+  const requestedPath = path.join(baseDirectory, req.asPath);
+
+  if (fs.existsSync(requestedPath) && !fs.statSync(requestedPath).isDirectory()) {
+    const ext = path.extname(requestedPath).toLowerCase();
+
+    // Set content-type dynamically
+    const contentTypes = {
+      '.pdf': 'application/pdf',
+      '.md': 'text/markdown',
+    };
+    res.setHeader('content-type', contentTypes[ext] || 'application/octet-stream');
+
+    return fs.createReadStream(requestedPath).pipe(res);
+  }
+
+  next(); // Continue if no file is found
+});
+
+// 404 handler
+use((req, res) => {
+  res.statusCode = 404;
+  res.end(`404: File Not Found at ${req.asPath}`);
+});
+
+module.exports = (req, res, next) => {
+  return routes.reduce((next, route) => route(req, res, next), next)();
+};
 ```
 

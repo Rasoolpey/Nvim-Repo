@@ -1,4 +1,7 @@
-vim.keymap.set("n", "<leader>ip", "i![](Media/)<ESC>F(a", { desc = "Insert image template" })
+vim.keymap.set("n", "<leader>ip", [[i<div style="text-align: center;">
+    <img src="Media/]] .. [[" alt="" width="400">
+    <p style="font-style: italic; font-size: 0.9em;">Caption here</p>
+</div>]] .. [[<ESC>5k0f"a]], { desc = "Insert image template with styling" })
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 return {
@@ -169,11 +172,49 @@ return {
 	{
 		"iamcco/markdown-preview.nvim",
 		ft = { "markdown" },
-
 		build = "cd app && npm install",
 		config = function()
+			-- Dynamically set the base directory based on the current Markdown file
+			vim.api.nvim_create_autocmd("BufEnter", {
+				pattern = "*.md",
+				callback = function()
+					-- Set the base directory to the location of the current Markdown file
+					local markdown_file_dir = vim.fn.expand("%:p:h") -- Directory of the current Markdown file
+					vim.g.mkdp_base_directory = markdown_file_dir
+					vim.env.MKDP_BASE_DIRECTORY = vim.g.mkdp_base_directory -- Update environment variable
+					print("Base Directory dynamically set to: " .. vim.g.mkdp_base_directory)
+				end,
+			})
+
+			-- Hardcode the location of the obsidian.lua directory and resolve CSS path
+			local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins" -- Location of the obsidian.lua file
+			local css_path = plugin_dir .. "/Tokionight-markdown.css"
+			vim.g.mkdp_markdown_css = css_path
+
+			-- Debugging for the CSS path
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "markdown",
+				callback = function()
+					print("Markdown CSS path: " .. vim.g.mkdp_markdown_css)
+					local f = io.open(css_path, "r")
+					if f then
+						print("CSS file found")
+						f:close()
+					else
+						print("CSS file not found!")
+					end
+				end,
+			})
+
+			-- Basic settings
 			vim.g.mkdp_filetypes = { "markdown" }
-			vim.keymap.set("n", "<leader>mp", ":MarkdownPreviewToggle <CR>", {})
+			vim.g.mkdp_auto_start = 0
+			vim.g.mkdp_auto_close = 1
+			vim.g.mkdp_refresh_slow = 0
+			vim.g.mkdp_theme = "dark"
+
+			-- Keymapping
+			vim.keymap.set("n", "<leader>mp", ":MarkdownPreviewToggle<CR>", { silent = true })
 		end,
 	},
 	{ "sbdchd/neoformat" },
