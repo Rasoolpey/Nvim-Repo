@@ -100,4 +100,16 @@ module.exports = (req, res, next) => {
   return routes.reduce((next, route) => route(req, res, next), next)();
 };
 ```
+## Image Importing key bindings:
+`<leader>ip` is to import one picture 
+`<leader>i11p` is to import image to a 1x1 grid
+`<leader>i12p` is to import image to a 1x2 grid
+`<leader>i13p` is to import image to a 1x3 grid
+`<leader>i21` is to import image to a 2x1 grid
+`<leader>i22` is to import image to a 2x2 grid
+`<leader>i23` is to import image to a 2x3 grid
+`<leader>i31` is to import image to a 3x1 grid
+`<leader>i32` is to import image to a 3x2 grid
+`<leader>i33` is to import image to a 3x3 grid
 
+* > [!Note] it's recommended to add ![[image|size]] right after the </div> to make sure that it's obsidian compatible. 
