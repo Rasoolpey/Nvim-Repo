@@ -1,285 +1,384 @@
-/* Font definitions */
+
+/*********************************************************
+ * 1) Force heading counters to start at 1 (no leading zero)
+ *********************************************************/
+html {
+  counter-reset: h1counter 0 !important;
+}
+
+/*********************************************************
+ * 2) Base theme & fonts
+ *********************************************************/
 :root {
-    --default-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Microsoft YaHei Light", sans-serif;
-    --font-monospace: 'Source Code Pro', monospace;
-    
-    /* Colors from Tokyo Night theme */
-    --bg: rgb(26, 27, 38);
-    --fg: rgb(192, 202, 245);
-    --red: rgb(247, 118, 142);
-    --green: rgb(158, 206, 106);
-    --blue: rgb(122, 162, 247);
-    --cyan: rgb(125, 207, 255);
-    --purple: rgb(187, 154, 247);
-    --orange: rgb(255, 158, 100);
-    --yellow: rgb(224, 175, 104);
-    --circle-bg: rgba(26, 27, 38, 0.3);
+  --default-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Microsoft YaHei Light", sans-serif;
+  --font-monospace: 'Source Code Pro', monospace;
+  
+  /* Tokyo Night style palette (base) */
+  --bg: rgb(26, 27, 38);
+  --fg: rgb(192, 202, 245);
+  --red: rgb(247, 118, 142);
+  --green: rgb(158, 206, 106);
+  --blue: rgb(122, 162, 247);
+  --cyan: rgb(125, 207, 255);
+  --purple: rgb(187, 154, 247);
+  --orange: rgb(255, 158, 100);
+  --yellow: rgb(224, 175, 104);
+  --circle-bg: rgba(26, 27, 38, 0.3);
+
+  /* Additional Vimium-like or Gruvbox-like colors */
+  --vimium-bg: #222436;
+  --vimium-fg: #c8d3f5;
+  --vimium-border: #1b1d2b;
+  --vimium-bg-highlight: #2f334d;
+  --vimium-green: #c3e88d;
+  --vimium-blue: #82aaff;
+  --vimium-fg-dark: #828bb8;
+  --vimium-border-highlight: #589ed7;
 }
 
-/* General styling */
 body {
-    background-color: var(--bg);
-    color: var(--fg);
-    font-family: var(--default-font);
-    line-height: 1.6;
-    padding: 2em;
-    counter-reset: h1counter;
+  background-color: var(--vimium-bg);
+  color: var(--vimium-fg);
+  font-family: var(--font-monospace);
+  margin: 0;
+  padding: 2em;
+  line-height: 1.6;
 }
 
-/* Section numbering and marker styles */
+/*********************************************************
+ * 3) Headings
+ *********************************************************/
 h1, h2, h3, h4, h5, h6 {
-    position: relative;
-    padding-left: 3.5em;
-    font-family: var(--default-font);
-    display: flex;
-    align-items: center;
+  position: relative;
+  padding-left: 3.5em;
+  font-family: var(--default-font);
+  display: flex;
+  align-items: center;
 }
 
-/* Counter resets */
+/* h1 increments h1counter, resets h2counter */
 h1 {
-    counter-reset: h2counter;
-    counter-increment: h1counter;
+  counter-reset: h2counter 0 !important;
+  counter-increment: h1counter 1 !important;
+  color: var(--red);
+  font-size: 2em;
+  font-weight: bold;
+  border-bottom: 2px solid var(--red);
+  padding-bottom: 0.3em;
 }
-h2 {
-    counter-reset: h3counter;
-    counter-increment: h2counter;
-}
-h3 {
-    counter-reset: h4counter;
-    counter-increment: h3counter;
-}
-h4 {
-    counter-reset: h5counter;
-    counter-increment: h4counter;
-}
-h5 {
-    counter-reset: h6counter;
-    counter-increment: h5counter;
-}
-h6 {
-    counter-increment: h6counter;
-}
-
-/* Headings with distinct colors */
-h1 {
-    color: var(--red);
-    font-size: 2em;
-    font-weight: bold;
-    border-bottom: 2px solid var(--red);
-    padding-bottom: 0.3em;
-}
-
-h2 {
-    color: var(--yellow);
-    font-size: 1.75em;
-    font-weight: bold;
-}
-
-h3 {
-    color: var(--green);
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-h4 {
-    color: var(--cyan);
-    font-size: 1.25em;
-    font-weight: bold;
-}
-
-h5 {
-    color: var(--blue);
-    font-size: 1.1em;
-    font-weight: bold;
-}
-
-h6 {
-    color: var(--purple);
-    font-size: 1em;
-    font-weight: bold;
-}
-
-/* Custom section marker */
-h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2.5em;
-    height: 2.5em;
-    background: var(--circle-bg);
-    border: 2px solid currentColor;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Section numbering inside the marker */
+/* h1 numbering = “1” */
 h1::after {
-    content: counter(h1counter);
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2.5em;
-    text-align: center;
-    color: currentColor;
+  content: counter(h1counter);
+  position: absolute;
+  left: 0; 
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5em;
+  text-align: center;
+  color: currentColor;
 }
 
+/* h2 increments h2counter, resets h3counter */
+h2 {
+  counter-reset: h3counter 0 !important;
+  counter-increment: h2counter 1 !important;
+  color: var(--yellow);
+  font-size: 1.75em;
+  font-weight: bold;
+}
 h2::after {
-    content: counter(h1counter) "." counter(h2counter);
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2.5em;
-    text-align: center;
-    color: currentColor;
+  content: counter(h1counter) "." counter(h2counter);
+  position: absolute;
+  left: 0; 
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5em;
+  text-align: center;
+  color: currentColor;
 }
 
+/* h3 increments h3counter, resets h4counter */
+h3 {
+  counter-reset: h4counter 0 !important;
+  counter-increment: h3counter 1 !important;
+  color: var(--green);
+  font-size: 1.5em;
+  font-weight: bold;
+}
 h3::after {
-    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter);
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2.5em;
-    text-align: center;
-    color: currentColor;
+  content: counter(h1counter) "." counter(h2counter) "." counter(h3counter);
+  position: absolute;
+  left: 0; 
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5em;
+  text-align: center;
+  color: currentColor;
 }
 
+/* h4 increments h4counter */
+h4 {
+  counter-reset: h5counter 0 !important;
+  counter-increment: h4counter 1 !important;
+  color: var(--cyan);
+  font-size: 1.25em;
+  font-weight: bold;
+}
 h4::after {
-    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter);
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2.5em;
-    text-align: center;
-    color: currentColor;
+  content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter);
+  position: absolute;
+  left: 0; 
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5em;
+  text-align: center;
+  color: currentColor;
 }
 
+/* h5 increments h5counter, resets h6counter */
+h5 {
+  counter-reset: h6counter 0 !important;
+  counter-increment: h5counter 1 !important;
+  color: var(--blue);
+  font-size: 1.1em;
+  font-weight: bold;
+}
 h5::after {
-    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter);
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2.5em;
-    text-align: center;
-    color: currentColor;
+  content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter);
+  position: absolute;
+  left: 0; 
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5em;
+  text-align: center;
+  color: currentColor;
 }
 
+/* h6 increments h6counter */
+h6 {
+  counter-increment: h6counter 1 !important;
+  color: var(--purple);
+  font-size: 1em;
+  font-weight: bold;
+}
 h6::after {
-    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) "." counter(h6counter);
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2.5em;
-    text-align: center;
-    color: currentColor;
+  content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) "." counter(h6counter);
+  position: absolute;
+  left: 0; 
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5em;
+  text-align: center;
+  color: currentColor;
 }
 
-/* Code blocks */
-pre, code {
-    background-color: rgba(41, 46, 66, 0.5);
-    border-radius: 4px;
-    padding: 0.2em 0.4em;
-    font-family: var(--font-monospace);
+/*********************************************************
+ * 4) Circular marker BEFORE each heading
+ *********************************************************/
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5em;
+  height: 2.5em;
+  background: var(--circle-bg);
+  border: 2px solid currentColor;
+  border-radius: 50%;  /* circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-pre {
-    padding: 1em;
-    overflow-x: auto;
+/*********************************************************
+ * 5) Code blocks
+ *********************************************************/
+/* highlight.js or Prism syntax container */
+.hljs {
+  background-color: var(--vimium-bg) !important;
+  color: var(--vimium-fg) !important;
+}
+pre > code {
+  background-color: var(--vimium-bg) !important;
+  color: var(--vimium-fg) !important;
+}
+/* Inline code block */
+code {
+  background-color: var(--vimium-bg-highlight);
+  color: var(--vimium-green);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
 }
 
-/* Links */
+/* Example token color overrides (edit to match your Neovim scheme) */
+.token.comment,
+.hljs-comment {
+  color: var(--vimium-fg-dark) !important;
+  font-style: italic;
+}
+.token.keyword,
+.hljs-keyword {
+  color: var(--purple) !important;
+}
+.token.function,
+.hljs-function,
+.hljs-title {
+  color: var(--blue) !important;
+}
+.token.string,
+.hljs-string {
+  color: var(--green) !important;
+}
+.token.number,
+.hljs-number,
+.token.boolean {
+  color: var(--orange) !important;
+}
+.token.operator,
+.hljs-operator {
+  color: var(--vimium-border-highlight) !important;
+}
+.token.punctuation,
+.hljs-punctuation {
+  color: var(--fg) !important; /* neutral punctuation */
+}
+.token.variable {
+  color: var(--red) !important; /* or any color you like */
+}
+
+/*********************************************************
+ * 6) Links
+ *********************************************************/
 a {
     color: var(--purple);
     text-decoration: none;
 }
-
 a:hover {
     color: var(--cyan);
     text-decoration: underline;
 }
-/* Replace with these clean image styles */
-/* Base image styles */
+
+/*********************************************************
+ * 7) Images
+ *********************************************************/
 img {
     border-radius: 4px;
     display: block;
 }
-
-/* Size variants */
 [alt*="400"] {
     width: 400px !important;
 }
-
 [alt*="500"] {
     width: 500px !important;
 }
-
 [alt*="300"] {
     width: 300px !important;
 }
-
-/* Alignment variants */
 [alt*="left"] {
     margin-left: 0 !important;
     margin-right: auto !important;
 }
-
 [alt*="right"] {
     margin-left: auto !important;
     margin-right: 0 !important;
-}/* Default center only for images without position specifier */
+}
 img:not([alt$="-left"]):not([alt$="-right"]) {
     margin: 1em auto;
 }
 
-/* Blockquotes */
-blockquote {
-    border-left: 4px solid var(--blue);
-    margin: 1em 0;
-    padding: 0.5em 1em;
-    background-color: rgba(41, 46, 66, 0.3);
-    font-family: var(--default-font);
-}
-
-/* Tables */
+/*********************************************************
+ * 8) Tables
+ *********************************************************/
 table {
-    border-collapse: collapse;
-    margin: 1em 0;
-    width: 100%;
-    font-family: var(--default-font);
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  background-color: var(--vimium-bg);
+  color: var(--vimium-fg);
 }
-
 th, td {
-    border: 1px solid rgba(41, 46, 66, 0.8);
-    padding: 0.5em;
+  border: 1px solid var(--vimium-border);
+  padding: 0.5em;
 }
-
 th {
-    background-color: rgba(41, 46, 66, 0.5);
-    color: var(--cyan);
+  background-color: var(--vimium-bg-highlight);
+  color: var(--vimium-green);
 }
 
-/* Lists */
+/*********************************************************
+ * 9) Lists & Blockquotes
+ *********************************************************/
+ul, ol {
+  padding-left: 1.5em;
+  color: var(--vimium-fg);
+  font-family: var(--default-font);
+}
+li {
+  margin: 0.5em 0;
+}
+blockquote {
+  border-left: 4px solid var(--vimium-blue);
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background-color: var(--vimium-bg-highlight);
+  color: var(--vimium-fg);
+}
+
 ul, ol {
     padding-left: 2em;
     font-family: var(--default-font);
 }
-
 li {
     margin: 0.5em 0;
 }
 
-/* Horizontal rules */
+/*********************************************************
+ * 10) Horizontal rules
+ *********************************************************/
 hr {
-    border: none;
-    border-top: 2px solid rgba(41, 46, 66, 0.8);
-    margin: 2em 0;
+  border: none;
+  border-top: 2px solid rgba(41, 46, 66, 0.8);
+  margin: 2em 0;
 }
+
+/*********************************************************
+ * 11) OVERRIDE the special <h3> that says "README"
+ *********************************************************
+ * The DOM path you mentioned: /html/body/div[1]/main/div/header/h3
+ * This ensures we make that <h3> large & remove numbering if needed.
+ *********************************************************/
+main > div > header > h3 {
+  font-size: 2.3em !important;       /* bigger, like an h1 */
+  font-weight: 700 !important;       /* bold */
+  color: var(--red) !important;      /* pick any color */
+  margin: 0.6em 0 0.4em 0 !important; 
+  padding-bottom: 0.3em !important;
+  border-bottom: 2px solid var(--red) !important;
+  display: inline-flex !important;    /* so svg icon + text line up */
+  align-items: center !important;
+}
+
+/* Remove heading counters/circles from this special h3 */
+main > div > header > h3::before,
+main > div > header > h3::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: none !important;
+}
+
+/* Resize or align the <svg> icon if desired */
+main > div > header > h3 svg {
+  width: 1.2em !important;
+  height: 1.2em !important;
+  margin-right: 0.4em !important;
+  vertical-align: middle !important;
+}
+

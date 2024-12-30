@@ -1,10 +1,10 @@
 This Nvim customization is based on LazyVim. \
-it includes plugins for Latex and Obsidian and github copilot.\
+it includes plugins for Latex and Obsidian and GitHub copilot.\
 document viewer for latex files is Zathura. \
 
-## Zathura setting
-in the directory of `~/.config/zathura/zathurarc` add the following lines:
-```
+# Configuration of Zathura
+In the directory of `~/.config/zathura/zathurarc` add the following lines:
+```bash
 set notification-error-bg       "rgba(50,48,47,1)"     # bg
 set notification-error-fg       "rgba(251,73,52,1)"    # bright:red
 set notification-warning-bg     "rgba(50,48,47,1)"     # bg
@@ -50,9 +50,9 @@ set recolor-keephue             "true"                 # keep original color
 More information can be found in the [eastack/zathura-gruvbox](https://github.com/eastack/zathura-gruvbox) repository.
 
 
+# linking PDF files to markdown viewer
+* > for this part `iamcco/markdown-preview.nvim` plugin has been used.\
 
-
-## linking PDF files to markdown veiwer the `iamcco/markdown-preview.nvim` plugin.
 in the `route.js` you need to add these few lines to make sure that it can find the linked pdf files correctly. the `route.js` file is located in the `~/.local/share/nvim/lazy/markdown-preview.nvim/app` directory.
 ```javascript
 // Preamble   
@@ -100,16 +100,16 @@ module.exports = (req, res, next) => {
   return routes.reduce((next, route) => route(req, res, next), next)();
 };
 ```
-## Image Importing key bindings:
-`<leader>ip` is to import one picture 
-`<leader>i11p` is to import image to a 1x1 grid
-`<leader>i12p` is to import image to a 1x2 grid
-`<leader>i13p` is to import image to a 1x3 grid
-`<leader>i21` is to import image to a 2x1 grid
-`<leader>i22` is to import image to a 2x2 grid
-`<leader>i23` is to import image to a 2x3 grid
-`<leader>i31` is to import image to a 3x1 grid
-`<leader>i32` is to import image to a 3x2 grid
-`<leader>i33` is to import image to a 3x3 grid
+# Image Importing key bindings:
+`<leader>ip` is to import one picture\
+`<leader>i11p` is to import image to a 1x1 grid\
+`<leader>i12p` is to import image to a 1x2 grid\
+`<leader>i13p` is to import image to a 1x3 grid\
+`<leader>i21` is to import image to a 2x1 grid\
+`<leader>i22` is to import image to a 2x2 grid\
+`<leader>i23` is to import image to a 2x3 grid\
+`<leader>i31` is to import image to a 3x1 grid\
+`<leader>i32` is to import image to a 3x2 grid\
+`<leader>i33` is to import image to a 3x3 grid\
 
 * > [!Note] it's recommended to add ![[image|size]] right after the </div> to make sure that it's obsidian compatible. 
