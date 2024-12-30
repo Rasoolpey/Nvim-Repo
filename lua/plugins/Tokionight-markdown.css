@@ -60,10 +60,10 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   counter-reset: h2counter 0 !important;
   counter-increment: h1counter 1 !important;
-  color: var(--red);
+  color: var(--blue);
   font-size: 2em;
   font-weight: bold;
-  border-bottom: 2px solid var(--red);
+  border-bottom: 2px solid var(--blue);
   padding-bottom: 0.3em;
 }
 /* h1 numbering = “1” */
