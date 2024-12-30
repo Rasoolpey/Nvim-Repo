@@ -382,3 +382,63 @@ main > div > header > h3 svg {
   vertical-align: middle !important;
 }
 
+/*********************************************************
+ * 12) Bold text color override
+ *********************************************************/
+strong,
+b {
+  color: var(--orange) !important; /* Choose any color you like */
+}
+
+
+/* Highlight Styles */
+mark.hltr-green {
+    background-color: rgba(158, 206, 106, 0.65); /* Green */
+    color: black; /* Optional: Adjust text color for contrast */
+    padding: 0 0.2em;
+    border-radius: 4px;
+}
+
+mark.hltr-aqua {
+    background-color: rgba(125, 207, 255, 0.65); /* Aqua (Cyan) */
+    color: black; /* Optional */
+    padding: 0 0.2em;
+    border-radius: 4px;
+}
+
+mark.hltr-red {
+    background-color: rgba(247, 118, 142, 0.65); /* Red */
+    color: black; /* Optional */
+    padding: 0 0.2em;
+    border-radius: 4px;
+}
+
+mark.hltr-orange {
+    background-color: rgba(255, 158, 100, 0.65); /* Orange */
+    color: black; /* Optional */
+    padding: 0 0.2em;
+    border-radius: 4px;
+}
+
+mark.hltr-yellow {
+    background-color: rgba(224, 175, 104, 0.65); /* Yellow */
+    color: black; /* Optional */
+    padding: 0 0.2em;
+    border-radius: 4px;
+}
+
+mark.hltr-purple {
+    background-color: rgba(187, 154, 247, 0.65); /* Purple */
+    color: black; /* Optional */
+    padding: 0 0.2em;
+    border-radius: 4px;
+}
+
+mark.hltr-grey {
+    background-color: rgba(202, 205, 218, 0.65); /* Grey */
+    color: black; /* Optional */
+    padding: 0 0.2em;
+    border-radius: 4px;
+}
+
+/* Add more colors as needed */

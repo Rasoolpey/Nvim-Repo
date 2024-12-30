@@ -185,6 +185,56 @@ vim.keymap.set("n", "<leader>i33p", [[i<div style="display: grid; grid-template-
     </figure>
 </div>]] .. [[<ESC>18k0f"a]], { desc = "Insert 3x3 image layout" })
 
+-- Keymaps for adding highlight environments in normal mode
+vim.keymap.set(
+	"n",
+	"<leader>hr",
+	[[i<mark class="hltr-red">]] .. [[</mark><ESC>4hi]],
+	{ desc = "Insert red highlight" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>ho",
+	[[i<mark class="hltr-orange">]] .. [[</mark><ESC>4hi]],
+	{ desc = "Insert orange highlight" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>hy",
+	[[i<mark class="hltr-yellow">]] .. [[</mark><ESC>4hi]],
+	{ desc = "Insert yellow highlight" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>hg",
+	[[i<mark class="hltr-green">]] .. [[</mark><ESC>4hi]],
+	{ desc = "Insert green highlight" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>he",
+	[[i<mark class="hltr-grey">]] .. [[</mark><ESC>4hi]],
+	{ desc = "Insert grey highlight" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>hc",
+	[[i<mark class="hltr-aqua">]] .. [[</mark><ESC>4hi]],
+	{ desc = "Insert aqua highlight" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>hb",
+	[[i<mark class="hltr-blue">]] .. [[</mark><ESC>4hi]],
+	{ desc = "Insert blue highlight" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>hp",
+	[[i<mark class="hltr-purple">]] .. [[</mark><ESC>4hi]],
+	{ desc = "Insert purple highlight" }
+)
+
 return {
 	{
 		"epwalsh/obsidian.nvim",
