@@ -113,3 +113,51 @@ module.exports = (req, res, next) => {
 `<leader>i33p` is to import image to a 3x3 grid\
 
 * > [!Note] it's recommended to add ![[image|size]] right after the </div> to make sure that it's obsidian compatible. 
+
+# Leader key and markdown preview
+
+- `<leader>` is `Space` (LazyVim default).
+- `<localleader>` is `\\` (LazyVim default).
+- Open the package manager UI with `:Lazy`.
+- In LazyVim, `<leader>l` usually opens the Lazy UI as well.
+
+# GitHub Copilot
+
+GitHub Copilot is included in this config using the `github/copilot.vim` plugin.
+
+## How to verify Copilot is active
+
+- Open the package manager with `:Lazy` and check that `github/copilot.vim` is installed/loaded.
+- Run `:Copilot status` in Neovim.
+- Open a code file and start typing; Copilot ghost text suggestions should appear when authenticated.
+
+Plugin definition is in `lua/plugins/GitCopilot.lua`.
+
+## Markdown rendering key bindings
+
+- `<leader>me`: enable in-editor markdown rendering (`render-markdown.nvim`).
+- `<leader>md`: disable in-editor markdown rendering (`render-markdown.nvim`).
+- `<leader>mp`: toggle HTML/browser markdown preview (`markdown-preview.nvim`).
+
+# LaTeX workflow (VimTeX + Zathura)
+
+This setup uses `lervag/vimtex` with `latexmk` as the compiler backend and `zathura` as the PDF viewer.
+
+## How PDF build works
+
+- Start compile with `:VimtexCompile`.
+- VimTeX calls `latexmk`.
+- In this repo, no engine override is set (`xelatex`/`lualatex`), so `latexmk` normally uses `pdflatex` unless your TeX file or global latexmk config changes it.
+- Build directories are configured as:
+  - `aux_dir = ./aux`
+  - `out_dir = ./out`
+
+## How PDF view works in Zathura
+
+- Viewer is set to `zathura`.
+- Open/focus the compiled PDF with `:VimtexView`.
+- Typical VimTeX shortcuts:
+  - `<localleader>ll`: toggle compile
+  - `<localleader>lv`: view PDF in Zathura
+
+With this config, `<localleader>` is `\\` by default.
